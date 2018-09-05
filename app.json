@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/cert",
+    "pages/index/details",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/my/info/info",
+    "pages/my/info/bind",
+    "pages/my/card/card",
+    "pages/my/order/order",
+    "pages/my/feedback/feedback",
+    "pages/my/set/set"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },  
+
+  "tabBar": {
+    "backgroundColor":"#fff",
+    "color":"#dbdbdb",
+    "selectedColor":"#3cc51f",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath":"static/icon/app_0.png",
+      "selectedIconPath":"static/icon/app_1.png"
+    }, {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath":"static/icon/my_0.png",
+      "selectedIconPath":"static/icon/my_1.png" 
+    }]
+  },
+
+  "plugins": {
+    "sdkPlugin": {
+      "version": "1.7.0",
+      "provider": "wxc6b86e382a1e3294"
+    }
+  },
+
+  "debug":true
+  
+}

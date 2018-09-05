@@ -1,0 +1,41 @@
+<view class="page">
+
+    <view class="page__bd">        
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle;" style="#8a8a8a">姓名:</view>
+                </view>
+                <view style="display: inline-block; vertical-align: middle">{{name}}</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle" style="#8a8a8a">身份证:</view>
+                </view>
+                <view style="display: inline-block; vertical-align: middle">{{idCard}}</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle" style="#8a8a8a">地址:</view>
+                </view>
+                <view style="display: inline-block; vertical-align: middle; font-size: 13px" >{{address}}</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle" style="#8a8a8a">银行卡:</view>
+                </view>
+                <view style="display: inline-block; vertical-align: middle">{{bankCard}}</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle; font-size: 13px" style="#8a8a8a">开户银行:</view>
+                </view>
+                <view style="display: inline-block; vertical-align: middle">{{bankInfo}}</view>
+            </view>
+        </view>
+
+        <view class="page__bd page__bd_spacing" style="margin-top: 10rpx" bindtap="changeBindPerson">
+        	<button class="weui-btn" type="primary" >修改绑定的信息</button>
+    	</view>
+    </view>
+</view>

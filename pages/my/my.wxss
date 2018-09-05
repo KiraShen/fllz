@@ -1,0 +1,26 @@
+/* pages/my/my.wxss */
+
+
+.userInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  background:#FFF; 
+}
+
+.userInfo image{
+  width: 180rpx;
+  border-radius: 80%;
+  border:2px solid white;
+  margin-top:10rpx;
+  margin-bottom: 10rpx;
+  color: #000;
+}
+
+.userInfo button{
+}
+
+.userInfo text{
+  font-size: 20px;
+}

@@ -1,0 +1,5 @@
+/* pages/my/order/order.wxss */
+
+.weui-form-preview{
+    margin-bottom: 25px;
+}

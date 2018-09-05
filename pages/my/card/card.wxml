@@ -1,0 +1,5 @@
+<!--pages/my/card/card.wxml-->
+
+<view style="background-color: #dbdbdb;text-align: center; " >
+	<text style="color: #707070;">暂无会员卡</text>
+</view>

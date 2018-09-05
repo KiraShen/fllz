@@ -1,0 +1,35 @@
+<view class="page">
+
+    <view class="page__bd">
+        <view class="weui-form-preview" wx:for="{{order}}"  wx:key="unique">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">证书编号</view>
+                    <view class="weui-form-preview__value_in-hd" style="color: #333333">{{item.certID}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+            	<view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label"> 购买人 </view>
+                    <view class="weui-form-preview__value" style="color: #333333">{{name}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">订单类型</view>
+                    <view class="weui-form-preview__value" style="color: #333333">{{item.tID}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">订单金额</view>
+                    <view class="weui-form-preview__value" style="color: #333333">¥{{item.uID}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">代理公司</view>
+                    <view class="weui-form-preview__value" style="color: #333333">{{item.aID}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label"> 时  间 </view>
+                    <view class="weui-form-preview__value" style="color: #333333">{{item.time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

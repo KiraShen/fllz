@@ -1,0 +1,18 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="page__bd">
+        <view class="weui-cells__title">输入你要绑定的身份证号码</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入身份证" type="idcard" focus="true" name="input"/>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" form-type="submit">确定</button>
+        </view>
+    </view>
+</form>
+</view>
