@@ -18,7 +18,7 @@ Page({
 
    onPullDownRefresh: function(){
     wx.stopPullDownRefresh()
-    // this.onFresh()
+    this.onFresh()
     //设置时间防止多次刷新
   },
 
