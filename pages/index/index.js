@@ -18,7 +18,7 @@ Page({
 
    onPullDownRefresh: function(){
     wx.stopPullDownRefresh()
-    this.onFresh()
+    // this.onFresh()
     //设置时间防止多次刷新
   },
 
@@ -71,9 +71,25 @@ Page({
   },
 
   showInput: function () {
-      this.setData({
-          inputShowed: true
-      });
+      if(!app.globalData.bindPersonStatus){ 
+          wx.showModal({
+            content: "个人信息为空，请先去\"我的信息\"中设置个人信息",
+            showCancel: false,
+            success: function (res) {
+                if (res.confirm) {
+                  console.log('openAlert ok.')
+                  wx.navigateTo({
+                    url: '../my/info/bind'
+                  })
+                }
+            }
+          });
+      }else{
+        this.setData({
+            inputShowed: true
+        });        
+      }
+
   },
   hideInput: function () {
       this.setData({

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    bindStatus:false
   },
 
   /**
@@ -17,10 +17,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '绑定信息'
     })
+    let that = this
   },
 
   formSubmit: function(e) {
     let that = this
+    let MyUser = new wx.BaaS.User()
     console.log('form submit...', e.detail.value.input)
     let idcardBufLen = e.detail.value.input.length
     let idcardstr = e.detail.value.input
@@ -30,10 +32,19 @@ Page({
       idcardstr = idcardstr.replace(/X/g, 'x')
       utils.getIDCard(idcardstr, (res) => {
         if(res.data.objects.length > 0){
-          console.log("get cert successful.",res.data.objects)
+          console.log("get user successful.",res.data.objects)
           app.globalData.bindPersonStatus = true
           app.globalData.uID = res.data.objects[0].ID
           app.globalData.personObject = res.data.objects[0]
+
+          //微信用户绑定身份证
+          let currentUser = MyUser.getCurrentUserWithoutData()
+          currentUser.set('uID', res.data.objects[0].ID).update().then(res => {
+            console.log("bind success")
+          }, err => {
+            // err
+          })
+          
           wx.setStorage({
             key:"bind_person_info",
             data:res.data.objects[0]

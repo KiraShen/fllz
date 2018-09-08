@@ -1,4 +1,4 @@
-/* pages/my/card/card.wxss */
+
 
 .placeholder{
     margin: 5px;
@@ -8,4 +8,12 @@
     height: 217px;
     line-height: 2.3em;
     color: #cfcfcf;
+}
+
+.placeholder .text{
+	padding-top:90px;
+	padding-left:50px;
+	color: #333333;
+	line-height:15pt;
+	text-align: left;
 }

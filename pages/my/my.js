@@ -20,8 +20,8 @@ Page({
     urlCard:"card/card",
     //绑定用户信息数据
     handleStatus:app.globalData.handleStatus,
-    avatarUrl:"../../static/image/baby.jpg",
-    nickName: "",
+    avatarUrl:"../../static/image/baby.jpg",//app.glogbalData.userObject.avatarUrl, //"../../static/image/baby.jpg",
+    nickName:"", //app.glogbalData.userObject.nickName, //"",
     //
     bindStatus:false,
     name:"",

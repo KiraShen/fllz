@@ -3,7 +3,7 @@
         <view class="userInfo">
             <image src='{{avatarUrl}}' mode='widthFix' display="none"></image>
             <view>
-                <button class="weui-btn mini-btn" size="mini" type="primary" plain="true"  hidden="{{handleStatus}}" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">点击按钮登录
+                <button class="weui-btn mini-btn" size="mini" type="primary" plain="true"  hidden="{{handleStatus}}" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">点击按钮获取头像
                 </button>         
                 <text hidden="{{!handleStatus}}">{{nickName}}</text>
             </view>        

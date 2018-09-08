@@ -120,6 +120,17 @@ let updateMyUser = (id,cb) =>{
     .catch(err => console.dir(err))
 }
 
+let getWxUserInfo = (id, cb) => {
+  console.log("getting wx user info...")
+  let MyUser = new wx.BaaS.User()
+  let query = new wx.BaaS.Query()
+
+  query.compare('id', '=', id)
+  MyUser.setQuery(query).find()
+    .then(res => cb(res))
+    .catch(err => console.dir(err))
+}
+
 let openAlert = (str) => {
   console.log('openAlert...')
   wx.showModal({
@@ -133,6 +144,17 @@ let openAlert = (str) => {
   });
 }
 
+let setUserPay = (id,time,type, cb) => {
+  console.log("set user pay...")
+  let getTable = getApp().globalData.userTable
+  let getObject = new wx.BaaS.TableObject(getTable)
+  let user = getObject.getWithoutData(id)
+  user.set({'paystatus':true,'paytime':time})
+  getObject.update()
+    .then(res => cb(res))
+    .catch(err => console.dir(err))
+}
+
 module.exports = {
   formatTime: formatTime,
   openAlert:openAlert,
@@ -143,5 +165,6 @@ module.exports = {
   getAgent:getAgent,
   getIDCard:getIDCard,
   getAllAgent,
-  getAllType
+  getAllType,
+  getWxUserInfo
 }

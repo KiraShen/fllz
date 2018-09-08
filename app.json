@@ -8,6 +8,7 @@
     "pages/my/info/info",
     "pages/my/info/bind",
     "pages/my/card/card",
+    "pages/my/card/pay",
     "pages/my/order/order",
     "pages/my/feedback/feedback",
     "pages/my/set/set"
@@ -43,6 +44,6 @@
     }
   },
 
-  "debug":false
+  "debug":true
   
 }

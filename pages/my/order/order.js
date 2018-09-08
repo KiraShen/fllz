@@ -20,11 +20,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的订单'
     })
-    this.setData({
-      uID:app.globalData.uID
-    })
-
-    if(app.globalData.uID == "0"){
+    
+    if(!app.globalData.bindPersonStatus){
       wx.showModal({
         content: "个人信息为空，请先去\"我的信息\"中设置个人信息",
         showCancel: false,
@@ -38,6 +35,19 @@ Page({
         }
       });
       //utils.openAlert("个人信息为空，请先去\"我的信息\"中设置个人信息")
+    }else if(!app.globalData.paystatus){
+      wx.showModal({
+        content: "没有开通高级会员，请先去\"我的会员卡\"中开通高级会员",
+        showCancel: false,
+        success: function (res) {
+            if (res.confirm) {
+              console.log('openAlert ok.')
+              wx.redirectTo({
+                url: '../card/card'
+              })
+            }
+        }
+      });
     }else{
       console.log("user:",app.globalData.userObject)
       utils.getOrder(app.globalData.uID, (res) => {

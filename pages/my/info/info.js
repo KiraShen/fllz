@@ -37,7 +37,15 @@ Page({
         url: 'bind'
       })
     }else{
+      utils.getUser(app.globalData.uID, (res) => {
+        console.log("get user successful.",res.data.objects[0])
+        app.globalData.personObject = res.data.objects[0]
 
+        wx.setStorage({
+          key:"bind_person_info",
+          data:res.data.objects[0]
+        })
+      })
     }
   },
 
@@ -53,23 +61,42 @@ Page({
    */
   onShow: function () {
     let that = this
-    wx.getStorage({
-      key: 'bind_person_info',
-      success: function(res) {
-        console.log("get storage success.",res)
-        that.setData({
-            uID:res.data.ID,
-            name:res.data.name,
-            idCard:res.data.idcard,
-            address:res.data.address,
-            bankCard:res.data.bankaccount,
-            bankInfo:res.data.bankinfo
-        })
-      },
-      fail:function(){
-        console.log("get storage fail.")
+    wx.showLoading({
+      title: '加载中',
+      success:function(){
+        setTimeout(function(){
+          wx.getStorage({
+            key: 'bind_person_info',
+            success: function(res) {
+              console.log("get storage success.",res)
+              that.setData({
+                  uID:res.data.ID,
+                  name:res.data.name,
+                  idCard:res.data.idcard,
+                  address:res.data.address,
+                  bankCard:res.data.bankaccount,
+                  bankInfo:res.data.bankinfo
+              })
+            },
+            fail:function(){
+              console.log("get storage fail.")
+              wx.showModal({
+                content: "网络出错...请检查网络",
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log('openAlert ok.')
+                  }
+                }
+              });
+            }
+          })
+          // console.log(oObject)
+          wx.hideLoading()
+        },500)
       }
     })
+
   },
 
   /**
