@@ -22,21 +22,21 @@ Page({
     let bindCount = 1;
     if(type == '1'){
       console.log("type error")
-      total = 0.01;
+      total = 38.00;
       name = "开通白银会员";
       mID = '1';
       searchCount = 5;
       bindCount = 2;
     }else if(type == '2'){
       console.log("type error")
-      total = 0.02;
+      total = 68.00;
       name = "开通黄金会员";
       mID = '2';
       searchCount = 10;
       bindCount = 3;
     }else if(type == '3'){
       console.log("type error")
-      total = 0.03;
+      total = 98.00;
       name = "开通白金会员";
       mID = '3';
       searchCount = 20;

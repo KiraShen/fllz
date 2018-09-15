@@ -3,8 +3,8 @@
         <view class="weui-flex" bindtap="payEvent" data-membership-type="1">
             <view class="weui-flex__item" >
                 <view class="placeholder" 
-                style="height:{{height}}px; background-image:url(../../../static/image/silver.png);background-repeat:no-repeat; background-size:100% 100%;">
-                <view class="text" style="padding-top: {{top}}px;">
+                style="height:{{height}}px; background-image:url(https://cloud-minapp-18649.cloud.ifanrusercontent.com/1g15HDpCtLpiYVmc.png);background-repeat:no-repeat; background-size:100% 100%;">
+                <view class="text" style="padding-top: {{top}}px;font-size: 12px;line-height: 12pt;">
                 
                     1.享受信息浏览服务和信息反馈服务 <text>\n</text>
                     2.享受证书查询服务5次/天 <text>\n</text>
@@ -18,8 +18,8 @@
         <view class="weui-flex">
             <view class="weui-flex__item" bindtap="payEvent" data-membership-type="2">
                 <view class="placeholder" 
-                style="height:{{height}}px; background-image:url(../../../static/image/gold.png);background-repeat:no-repeat; background-size:100% 100%;">
-                <view class="text" style="padding-top: {{top}}px;">
+                style="height:{{height}}px; background-image:url(https://cloud-minapp-18649.cloud.ifanrusercontent.com/1g15HDuujaquYQEd.png);background-repeat:no-repeat; background-size:100% 100%;">
+                <view class="text" style="padding-top: {{top}}px;font-size: 12px;line-height: 12pt;">
                     1.享受信息浏览和信息反馈服务<text>\n</text>
                     2.享受证书查询服务10次/天<text>\n</text>
                     3.最多绑定3位人员信息，查询订单信息服务<text>\n</text>
@@ -31,8 +31,8 @@
         <view class="weui-flex">
             <view class="weui-flex__item" bindtap="payEvent" data-membership-type="3">
                 <view class="placeholder" 
-                style="height:{{height}}px; background-image:url(../../../static/image/platinum.png);background-repeat:no-repeat; background-size:100% 100%;">
-                <view class="text" style="padding-top: {{top}}px;">
+                style="height:{{height}}px; background-image:url(https://cloud-minapp-18649.cloud.ifanrusercontent.com/1g15HDdVFPVxTpun.png);background-repeat:no-repeat; background-size:100% 100%;">
+                <view class="text" style="padding-top: {{top}}px;font-size: 12px;line-height: 12pt;">
                     1.享受信息浏览和信息反馈服务<text>\n</text>
                     2.享受证书查询服务20次/天<text>\n</text>
                     3.最多绑定5位人员信息，查询订单信息服务<text>\n</text>
