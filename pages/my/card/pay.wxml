@@ -34,8 +34,8 @@
                 style="height:{{height}}px; background-image:url(../../../static/image/platinum.png);background-repeat:no-repeat; background-size:100% 100%;">
                 <view class="text" style="padding-top: {{top}}px;">
                     1.享受信息浏览和信息反馈服务<text>\n</text>
-                    2.享受证书查询服务15次/天<text>\n</text>
-                    3.最多绑定4位人员信息，查询订单信息服务<text>\n</text>
+                    2.享受证书查询服务20次/天<text>\n</text>
+                    3.最多绑定5位人员信息，查询订单信息服务<text>\n</text>
                     4.白金会员权益一年
                 </view>
                 </view>
@@ -45,21 +45,27 @@
         <view class="weui-article__section" style="margin-top: 18px">
             <view class="weui-article__title">会员权益相关解释</view>
             <view class="weui-article__section">
-                <view class="weui-article__h3">证书</view>
+                <view class="weui-article__h3">证书查询</view>
                 <view class="weui-article__p">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.
+                    证书查询，根据纸质证书的唯一标号查询，如果信息匹配到我们数据库信息，那么将显示该证书的信息；普通会员每天可免费查询2次，开通高级会员享受更多查询次数。
                 </view>
             </view>
             <view class="weui-article__section">
-                <view class="weui-article__h3">订单</view>
+                <view class="weui-article__h3">人员绑定</view>
                 <view class="weui-article__p">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    人员绑定，为了更好的提供服务，输入您的身份证号，即可绑定该微信账户；当然绑定个人账户只限是我们的会员，否则将无法匹配你的身份证号，我们系统也不会有你的信息；普通会员只能绑定一个，一旦绑定将无法修改，请慎重绑定。开通高级会员享受更多绑定次数。
+                </view>
+            </view>
+            <view class="weui-article__section">
+                <view class="weui-article__h3">订单查询</view>
+                <view class="weui-article__p">
+                    订单查询，一旦正确绑定了我们的会员，将会为您呈现该会员所有的订单。不过只能开通了高级会员才能查看。
+                </view>
+            </view>
+            <view class="weui-article__section">
+                <view class="weui-article__h3">问题反馈</view>
+                <view class="weui-article__p">
+                    如果出现了任何问题，请把问题先记录下来，不久后，待我们的问题反馈功能开通，给你带来的不便敬请谅解。
                 </view>
             </view>
         </view>

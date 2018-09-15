@@ -35,7 +35,7 @@ Page({
         }
       });
       //utils.openAlert("个人信息为空，请先去\"我的信息\"中设置个人信息")
-    }else if(!app.globalData.paystatus){
+    }else if(!app.globalData.payStatus){
       wx.showModal({
         content: "没有开通高级会员，请先去\"我的会员卡\"中开通高级会员",
         showCancel: false,
@@ -86,18 +86,25 @@ Page({
                 if(oObject[i].tID==tObject[k].ID){
                   oObject[i].tID = tObject[k].type_name
                   oObject[i].uID = tObject[k].money
+                  oObject[i].bankflow = tObject[k].shares
                   // oObject[i].push({"money":tObject[k].money})
                   break
                 }
               }
             }
-            that.setData({
-              order:oObject,
-              name:app.globalData.personObject.name
+            wx.getStorage({
+              key:'bind_person_info',
+              success:function(res){
+                that.setData({
+                  order:oObject,
+                  name:res.data.name
+                })
+              }
             })
+
             // console.log(oObject)
             wx.hideLoading()
-          },2500)
+          },2000)
         }
       })
 

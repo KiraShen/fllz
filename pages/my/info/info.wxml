@@ -34,8 +34,8 @@
             </view>
         </view>
 
-        <view class="page__bd page__bd_spacing" style="margin-top: 10rpx" bindtap="changeBindPerson">
+<!--         <view class="page__bd page__bd_spacing" style="margin-top: 10rpx" bindtap="changeBindPerson">
         	<button class="weui-btn" type="primary" >修改绑定的信息</button>
-    	</view>
+    	</view> -->
     </view>
 </view>

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bindStatus:false
+
   },
 
   /**
@@ -18,6 +18,41 @@ Page({
       title: '绑定信息'
     })
     let that = this
+    wx.getStorage({
+      key: 'bind_user_info',
+      success: function(res) {
+        console.log("get user info success.",res)
+          let count = res.data.uID_array.length
+          console.log("current count.",count)
+          if(res.data.bind_count > count){
+            console.log("ok to bind,now bind count:",res.data.bind_count)    
+          }else{
+            console.log("over bind num")
+            wx.showModal({
+              content: "对不起，你绑定数量已经上线，请开通更高级会员",
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('openAlert ok.')
+                }
+                wx.navigateBack();
+              }
+            });
+          }
+      },
+      fail:function(){
+        wx.showModal({
+          content: "网络出错了，退出重试吧",
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('openAlert ok.')
+            }
+            wx.navigateBack();
+          }
+        });
+      }
+    })
   },
 
   formSubmit: function(e) {
@@ -44,16 +79,39 @@ Page({
           }, err => {
             // err
           })
-          
+
+          utils.updateMyUserUIDArray(res.data.objects[0].ID,(res)=>{
+            console.log("updateMyUserUIDArray ssuccess")
+          },(res)=>{
+            console.log("updateMyUserUIDArray defeat") 
+          })
+
           wx.setStorage({
             key:"bind_person_info",
             data:res.data.objects[0]
           })
-          that.openToast()
-          wx.navigateBack()
+          wx.showToast({
+              title: '绑定成功',
+              icon: 'success',
+              success:function(){
+                setTimeout(function () {
+                  utils.getWxUserInfo(app.globalData.userID, (ress) => {
+                    console.log("user info:" ,ress.data.objects[0])
+                    let bufObject = ress.data.objects[0]
+                    wx.setStorage({
+                      key:"bind_user_info",
+                      data:bufObject
+                    })
+                  })
+                }, 800)
+              },
+            complete:function(){
+              wx.navigateBack()
+            }
+          })
         }else{
           console.log("get cert no result.")
-          this.openAlert('未查询到身份证结果,请等待数据上传...')
+          this.openAlert('未查询到身份证结果,请反馈你的信息...')
         }
       })
     }
@@ -112,7 +170,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**

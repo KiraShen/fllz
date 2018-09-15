@@ -7,10 +7,13 @@ Page({
    */
   data: {
     avatarUrl:"../../../static/image/baby.jpg",
-    name:"",
-    cardname:"普通会员",
-    cardstatus:"0",
-    time:"永久"
+    cardName:"普通会员",
+    payTime:"今天",
+    deadTime:"永久",
+
+    orderShow:"不可以",
+    searchCount:"2",
+    bindCount:"1"
   },
 
   openMembership:function(){
@@ -27,38 +30,45 @@ Page({
       title: '我的会员'
     })
     
-    if(!app.globalData.bindPersonStatus){
-      wx.showModal({
-        content: "个人信息为空，请先去\"我的信息\"中设置个人信息",
-        showCancel: false,
-        success: function (res) {
-            if (res.confirm) {
-              console.log('openAlert ok.')
-              wx.redirectTo({
-                url: '../info/bind'
-              })
-            }
+    wx.getStorage({
+      key: 'bind_user_info',
+      success: function(res) {
+        console.log("get user info success.",res)
+        // let date = res.data.paytime.getFullYear()+1
+        let m = "普通会员"
+        let s = 2;
+        if(res.data.paystatus){
+          switch(res.data.membertype){
+            case "1":m = "白银会员"; s = 5;break;
+            case "2":m = "黄金会员"; s = 10;break;
+            case "3":m = "白金会员"; s = 20;break;
+            default: m = "普通会员"
+          }
+          that.setData({
+            payTime:res.data.paytime.substr(0,10),
+            deadTime:'2019'+ res.data.paytime.substr(4,6),
+            cardName:m,
+            bindCount:res.data.bind_count,
+            searchCount:s,
+            orderShow:"可以"
+          })
         }
-      });
-    }else{
-      let str = app.globalData.paytime.substr(0,10)
-      let m = "会员"
-      switch(app.globalData.membertype){
-        case "1":m = "白银会员"; break;
-        case "2":m = "黄金会员"; break;
-        case "3":m = "白金会员"; break;
-        default: m = "普通会员"
+
+      },
+      fail:function(){
+        console.log("get storage fail.")
+        // wx.showModal({
+        //   content: "网络出错...请检查网络",
+        //   showCancel: false,
+        //   success: function (res) {
+        //     if (res.confirm) {
+        //       console.log('openAlert ok.')
+        //     }
+        //   }
+        // });
       }
-      // let date =  that.formatDate(str);
-      that.setData({
-        avatarUrl:app.globalData.userObject.avatarUrl,
-        name:app.globalData.personObject.name,
-        time:str,
-        cardname:m
-      })
-      // console.log("user card status",app.globalData.membertype)
-      // console.log("user card time",date.setYear(date.getYear() + 1))
-    }
+    })
+
   },
 
   // formatDate:function(value) {

@@ -80,15 +80,15 @@ Page({
             },
             fail:function(){
               console.log("get storage fail.")
-              wx.showModal({
-                content: "网络出错...请检查网络",
-                showCancel: false,
-                success: function (res) {
-                  if (res.confirm) {
-                    console.log('openAlert ok.')
-                  }
-                }
-              });
+              // wx.showModal({
+              //   content: "网络出错...请检查网络",
+              //   showCancel: false,
+              //   success: function (res) {
+              //     if (res.confirm) {
+              //       console.log('openAlert ok.')
+              //     }
+              //   }
+              // });
             }
           })
           // console.log(oObject)

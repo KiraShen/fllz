@@ -12,12 +12,15 @@ Page({
     iconInfo:"../../static/icon/myi.png",
     iconEmoji:"../../static/icon/emoji.png",
     iconMsg:"../../static/icon/msg.png",
+    iconBinding:"../../static/icon/binding.png",
     //url
     urlInfo:"info/info",
     urlOrder:"order/order",
     urlSet:"set/set",
     urlFeedback:"feedback/feedback",
     urlCard:"card/card",
+    urlbinding:"binding/binding",
+
     //绑定用户信息数据
     handleStatus:app.globalData.handleStatus,
     avatarUrl:"../../static/image/baby.jpg",//app.glogbalData.userObject.avatarUrl, //"../../static/image/baby.jpg",

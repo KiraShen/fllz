@@ -22,6 +22,10 @@
                     <view class="weui-form-preview__value" style="color: #333333">¥{{item.uID}}</view>
                 </view>
                 <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">配送股权</view>
+                    <view class="weui-form-preview__value" style="color: #333333">{{item.bankflow}}股</view>
+                </view>
+                <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">代理公司</view>
                     <view class="weui-form-preview__value" style="color: #333333">{{item.aID}}</view>
                 </view>

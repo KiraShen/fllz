@@ -1,0 +1,21 @@
+<!--pages/my/binding/binding.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd">
+        <view class="weui-cells__title">请选择当前需要绑定的用户</view>
+        <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="radioChange">
+                <label class="weui-cell weui-check__label" wx:for="{{allPersonInfo}}"  wx:for-index="index" wx:for-item="itemName" wx:key="unique">
+                    <radio class="weui-check" value="{{itemName.ID}}" checked="{{itemName.checked}}"/>
+
+                    <view class="weui-cell__bd">{{itemName.name}}</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{itemName.checked}}">
+                        <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                    </view>
+                </label>
+            </radio-group>
+            <view class="weui-cell weui-cell_link" bindtap="addMore">
+                <view class="weui-cell__bd">添加更多</view>
+            </view>
+        </view>
+    </view>
+</view>

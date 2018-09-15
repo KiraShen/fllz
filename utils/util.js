@@ -14,6 +14,7 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+
 let getCert = (id, cb) => {
   console.log("getting cert...")
   let getTable = getApp().globalData.orderTable,
@@ -45,6 +46,17 @@ let getUser = (id, cb) => {
     query = new wx.BaaS.Query()
 
   query.compare('ID', '=', id)
+  getObject.setQuery(query).find()
+    .then(res => cb(res))
+    .catch(err => console.dir(err))
+}
+
+let getAllUser = (idarray, cb) => {
+  console.log("getting user...")
+  let getTable = getApp().globalData.userTable,
+    getObject = new wx.BaaS.TableObject(getTable),
+    query = new wx.BaaS.Query()
+    query.in('ID', idarray)
   getObject.setQuery(query).find()
     .then(res => cb(res))
     .catch(err => console.dir(err))
@@ -120,6 +132,24 @@ let updateMyUser = (id,cb) =>{
     .catch(err => console.dir(err))
 }
 
+let updateMyUserInfo = (id,key,cb) =>{
+  console.log("update wx user info:",key)
+  let MyUser = new wx.BaaS.User()
+  let currentUser = MyUser.getCurrentUserWithoutData()
+  currentUser.set(key, id).update()
+    .then(res => cb(res))
+    .catch(err => console.dir(err))
+}
+
+let updateMyUserUIDArray = (id,cb) =>{
+  console.log("update wx user uID array:",id)
+  let MyUser = new wx.BaaS.User()
+  let currentUser = MyUser.getCurrentUserWithoutData()
+  currentUser.uAppend('uID_array', id).update()
+    .then(res => cb(res))
+    .catch(err => console.dir(err))
+}
+
 let getWxUserInfo = (id, cb) => {
   console.log("getting wx user info...")
   let MyUser = new wx.BaaS.User()
@@ -166,5 +196,8 @@ module.exports = {
   getIDCard:getIDCard,
   getAllAgent,
   getAllType,
-  getWxUserInfo
+  getWxUserInfo,
+  getAllUser,
+  updateMyUserInfo,
+  updateMyUserUIDArray
 }

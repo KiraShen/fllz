@@ -12,26 +12,35 @@ Page({
   },
 
   payEvent:function(event){
+    setTimeout(function(){
     let type = event.currentTarget.dataset.membershipType;
     console.log("membershiptype:",type);
     let total = 1;
     let name = "";
-    let mID = 0;
+    let mID = '0';
+    let searchCount = 2;
+    let bindCount = 1;
     if(type == '1'){
       console.log("type error")
       total = 0.01;
       name = "开通白银会员";
-      mID = 1;
+      mID = '1';
+      searchCount = 5;
+      bindCount = 2;
     }else if(type == '2'){
       console.log("type error")
       total = 0.02;
       name = "开通黄金会员";
-      mID = 2;
+      mID = '2';
+      searchCount = 10;
+      bindCount = 3;
     }else if(type == '3'){
       console.log("type error")
       total = 0.03;
       name = "开通白金会员";
-      mID = 3;
+      mID = '3';
+      searchCount = 20;
+      bindCount = 5;
     }else{
       //erroe
       console.log("type error")
@@ -43,6 +52,7 @@ Page({
       merchandiseRecordID:mID
     }
 
+    console.log("params",params)
     wx.BaaS.pay(params).then(res => {
       // success. 支付请求成功响应，可以在 res 中拿到 transaction_no 和支付结果信息
       /* 1.1.4 以下版本：
@@ -60,12 +70,23 @@ Page({
 
       let MyUser = new wx.BaaS.User()
       let currentUser = MyUser.getCurrentUserWithoutData()
+      app.globalData.payStatus = true
       currentUser.set({
         'paystatus': true,
         'paytime': nowDate,
-        'membertype':mID
+        'membertype':mID,
+        'search_count':searchCount,
+        'bind_count':bindCount
       }).update().then(res => {
         console.log("pay success")
+        utils.getWxUserInfo(app.globalData.userID, (ress) => {
+          console.log("user info:" ,ress.data.objects[0])
+          let bufObject = ress.data.objects[0]
+          wx.setStorage({
+            key:"bind_user_info",
+            data:bufObject
+          })
+        })
       }, err => {
         // err
       })
@@ -109,6 +130,8 @@ Page({
       }
       
     })
+    },500)
+    
   },
   /**
    * 生命周期函数--监听页面加载

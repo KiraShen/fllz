@@ -7,7 +7,8 @@ App({
     wx.BaaS.wxExtend(wx.login, wx.getUserInfo, wx.requestPayment)
     let clientID = 'f408262730f97878b88c'
     wx.BaaS.init(clientID)
-    
+    console.log("now time",new Date().toLocaleDateString())
+    let nowTime = new Date().toLocaleDateString()//Math.round(new Date().getTime()/1000)////utils.formatTime(new Date())
     // 登录
     wx.BaaS.login(false).then(res => {
       // 登录成功
@@ -17,15 +18,48 @@ App({
       utils.getWxUserInfo(res.id, (ress) => {
         console.log("user info:" ,ress.data.objects[0])
         let bufObject = ress.data.objects[0]
+        // wx.setStorage({
+        //   key:"bind_user_info",
+        //   data:bufObject
+        // })
         if(bufObject.uID != "0"){
           that.globalData.bindPersonStatus = true
           that.globalData.uID = bufObject.uID
-          that.globalData.paystatus = bufObject.paystatus
-          that.globalData.paytime = bufObject.paytime
-          that.globalData.bind_count = bufObject.bind_count
-          that.globalData.search_count = bufObject.search_count
-          that.globalData.membertype = bufObject.membertype
         }
+        that.globalData.payStatus = bufObject.paystatus
+        that.globalData.loginAt = bufObject.login_at
+        let mType = bufObject.membertype
+        if(bufObject.login_at == null){
+          //记录登录时间
+          utils.updateMyUserInfo(nowTime,'login_at',(res)=>{
+            console.log("login successful at",nowTime)
+          })
+        }else{          
+        //当前日期比上次多一天，重置 
+          let lastTime = new Date(bufObject.login_at.substr(0,10).replace(/-/g,"/")) //new Date(bufObject.login_at.substr(0,10))
+          let nowTimes = new Date(nowTime)
+          // console.log(lastTime)
+          // console.log(nowTime)
+          // console.log(nowTime > lastTime)
+          if(nowTimes > lastTime){
+            utils.updateMyUserInfo(nowTime,'login_at',(res)=>{
+              console.log("login successful at",nowTime)
+            })
+            console.log("type",mType)
+            switch(mType){
+              case "1": {utils.updateMyUserInfo(5,'search_count',(res)=>{});bufObject.search_count = 5;break;}
+              case "2": {utils.updateMyUserInfo(10,'search_count',(res)=>{});bufObject.search_count = 10;break;}
+              case "3": {utils.updateMyUserInfo(20,'search_count',(res)=>{});bufObject.search_count = 20;break;}
+              default : {utils.updateMyUserInfo(2,'search_count',(res)=>{});bufObject.search_count = 2;}
+            }
+
+          }
+        }
+        wx.setStorage({
+          key:"bind_user_info",
+          data:bufObject
+        })
+
       })
     }, res => {
       // 登录失败
@@ -41,6 +75,7 @@ App({
       that.globalData.language = res.language
       }
     })
+
 
     //测试pay
       // let nowDate = utils.formatTime(new Date())
@@ -82,15 +117,14 @@ App({
     userID: null,
     userObject:null,//{"nickName":"","avatarUrl":"../../static/image/baby.jpg"}, //null,
     handleStatus:false,
+
     //绑定个人信息
     bindPersonStatus:false,
     uID:"0",
     personObject:null,
-    paystatus:false,
-    paytime:null,
-    membertype:"0",
-    bind_count:2,
-    search_count:5,
+    payStatus:false,
+    loginAt:null,
+
     //数据库表格
     orderTable:49813,
     agentTable:49812,
